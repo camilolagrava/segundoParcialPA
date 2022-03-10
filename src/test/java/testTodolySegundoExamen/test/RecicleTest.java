@@ -12,7 +12,7 @@ public class RecicleTest extends BaseTodoLy {
     MainPage mainPage= new MainPage();
     LoginModal loginModal= new LoginModal();
     MenuSection menuSection = new MenuSection();
-    UserPage userPage = new UserPage();
+    UserPage userPage =  new UserPage();
 
     @Test
     public void verifyLoginTodoLy(){
@@ -26,6 +26,12 @@ public class RecicleTest extends BaseTodoLy {
 
     @Test
     public void verifyRecicleTodoly(){
+        verifyLoginTodoLy();
+        userPage.botonReciclaje.click();
+        userPage.botonReciclajeOculto.click();
+        userPage.botonReciclajePesplegable.click();
 
+        Assertions.assertTrue(userPage.mensajedeConfirmacionReciclaje.isControlDisplayed(),
+                "No se pudo recilar la papelera");
     }
 }
